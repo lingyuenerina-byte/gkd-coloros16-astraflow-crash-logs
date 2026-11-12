@@ -1,0 +1,38 @@
+== 设备指纹 ==
+model=PKG110 brand=OnePlus
+build=PKG110_16.0.2.400(CN01)
+Android 16 (SDK 36)
+GKD li.songe.gkd 1.13.0 (versionCode=100)
+无障碍服务= li.songe.gkd/com.google.android.accessibility.selecttospeak.SelectToSpeakServicePrivileged + SelectToSpeakServiceCompanion, accessibility_enabled=1
+隐藏类模块：未安装（pm list packages 核查为空）
+
+== 崩溃统计 ==
+2026-11-12 crash buffer FATAL EXCEPTION 共 34 次，全部 Process: com.android.systemui
+代表性时间：14:51:56.415 PID 26277；14:52:04.883 PID 27717
+禁用 GKD 无障碍并清空 crash buffer 后：0 新增崩溃（用户实测点击灵动岛+下拉通知栏数分钟）
+
+== 完整堆栈（14:52:04.883, PID 27717）==
+E AndroidRuntime: FATAL EXCEPTION: main
+E AndroidRuntime: Process: com.android.systemui, PID: 27717
+E AndroidRuntime: android.content.res.Resources$NotFoundException: String resource ID #0x7f10008d
+E AndroidRuntime:     at android.content.res.Resources.getText(Resources.java:502)
+E AndroidRuntime:     at android.content.res.Resources.getString(Resources.java:595)
+E AndroidRuntime:     at za.isValid(r8-map-id-157bfbe102b056f880f53f47bc1be6cfd2e8cc832f2fca569609fdf2080c9272:337)
+E AndroidRuntime:     at q2.createAccessibilityNodeInfo(r8-map-id-157bfbe102b056f880f53f47bc1be6cfd2e8cc832f2fca569609fdf2080c9272:3)
+E AndroidRuntime:     at android.view.AccessibilityInteractionController$AccessibilityNodePrefetcher.prefetchDescendantsOfVirtualNode(AccessibilityInteractionController.java:1692)
+E AndroidRuntime:     at android.view.AccessibilityInteractionController$AccessibilityNodePrefetcher.prefetchDescendantsOfVirtualNode(AccessibilityInteractionController.java:1704)
+E AndroidRuntime:     at android.view.AccessibilityInteractionController$AccessibilityNodePrefetcher.prefetchDescendantsOfVirtualNode(AccessibilityInteractionController.java:1704)
+E AndroidRuntime:     at android.view.AccessibilityInteractionController$AccessibilityNodePrefetcher.prefetchDescendantsOfVirtualNode(AccessibilityInteractionController.java:1704)
+E AndroidRuntime:     at android.view.AccessibilityInteractionController$AccessibilityNodePrefetcher.prefetchDescendantsOfRealNode(AccessibilityInteractionController.java:1592)
+E AndroidRuntime:     at android.view.AccessibilityInteractionController$AccessibilityNodePrefetcher.prefetchAccessibilityNodeInfos(AccessibilityInteractionController.java:1354)
+E AndroidRuntime:     at android.view.AccessibilityInteractionController.findAccessibilityNodeInfoByAccessibilityIdUiThread(AccessibilityInteractionController.java:412)
+E AndroidRuntime:     at android.view.AccessibilityInteractionController.-$$Nest$mfindAccessibilityNodeInfoByAccessibilityIdUiThread(Unknown Source:0)
+E AndroidRuntime:     at android.view.AccessibilityInteractionController$PrivateHandler.handleMessage(AccessibilityInteractionController.java:1769)
+E AndroidRuntime:     at android.os.Handler.dispatchMessage(Handler.java:115)
+E AndroidRuntime:     at android.os.Looper.loopOnce(Looper.java:298)
+E AndroidRuntime:     at android.os.Looper.loop(Looper.java:408)
+E AndroidRuntime:     at android.app.ActivityThread.main(ActivityThread.java:9964)
+E AndroidRuntime:     at java.lang.reflect.Method.invoke(Native Method)
+E AndroidRuntime:     at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:613)
+E AndroidRuntime:     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1074)
+OplusExceptionHelper: [OPLUS]FATAL EXCEPTION: main（同上，OPLUS 重复记录）
